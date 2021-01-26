@@ -1,0 +1,14 @@
+<launch>
+
+    <node pkg="calib_ouster" type="calib_ouster" name="calib_ouster" output="screen">
+        <param name="camera_param" type="string" value="$(find calib_ouster)/config/left.yaml"/>
+        <param name="image_path" type="string" value="$(find calib_ouster)/img/8.png"/>
+        <param name="pointcloud_path" type="string" value="$(find calib_ouster)/data/8.json"/>
+    </node>
+
+    <arg name="rviz" default="true"/>
+    <group if="$(arg rviz)">
+        <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find calib_ouster)/rviz/calib.rviz"/>
+    </group>
+
+</launch>

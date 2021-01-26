@@ -1,0 +1,11 @@
+<launch>
+
+    <node pkg="calib_ouster" type="extract_ouster" name="extract_ouster" output="screen">
+        <param name="cam_cal_file" type="string" value="$(find calib_ouster)/config/left.yaml"/>
+        <param name="pc_write_path" type="string" value="$(find calib_ouster)/data/8.json"/>
+        <param name="img_write_path" type="string" value="$(find calib_ouster)/img/"/>
+        <remap from="~image_raw" to="/camera/image_raw"/>
+        <remap from="~lidar_pc" to="/os_cloud_node/points"/>
+    </node>
+
+</launch>
